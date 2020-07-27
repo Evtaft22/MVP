@@ -1,7 +1,7 @@
 require('dotenv').config();
+const mysql = require('mysql2');
 const express = require('express');
 const path = require('path');
-const mysql = require('mysql2');
 
 const { PORT } = process.env;
 
@@ -15,15 +15,9 @@ app.listen(PORT, err => {
 	}
 });
 
-app.get('/test', (req, res, error) => {
-	if(error) {
-		console.error(error, 'this is what\'s wrong with /test');
-	} else {
-		res.send('tteret');
-	}
+app.get('/', (req, res) => {
+	res.sendFile(path.join(__dirname, './index.html'));
 });
-
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, './client/index.html')));
 
 const db = mysql.createConnection({
 	host: 'localhost',

@@ -1,12 +1,12 @@
 module.exports = {
-  entry: './client/app',
+  entry: './client/app.jsx',
   output: {
     filename: 'bundle.js',
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx$/,
         exclude: /node_modules/,
         use: 'babel-loader',
       },
