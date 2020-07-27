@@ -1,9 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import HelloWorld from './helloworld.jsx';
+import Main from './main.jsx';
 
-render(
-  <HelloWorld />,
-  document.getElementById('app-root'),
-);
+render(<Main />, document.getElementById('app'));
