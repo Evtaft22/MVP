@@ -31,7 +31,6 @@ class Search extends Component {
         <h3>Search Movie Title</h3>
         <input id='input-field' type='text' value={title} onChange={this.handleChange}></input>
         <button type='button' onClick={this.handleClick}>Gimme The Deets!</button>
-        <button type='button' onClick={this.handleClick}>Random Movie!</button>
       </div>
     );
   }

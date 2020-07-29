@@ -81,7 +81,7 @@ const postFavorite = (movieObj) => {
   return new Promise((resolve, reject) => {
     db.query(moviesQuery, err => {
       if (err) {
-        reject(console.log(err, "postFavorite error"));
+        reject(console.error(err, "postFavorite error"));
       } else {
         resolve(console.log('Movie data was added to DB successfully!'));
       }
@@ -93,13 +93,30 @@ app.post('/postFavs', (req, res) => {
 	const { title } = req.body;
 	getMovie(title)
   .then(movieData => postFavorite(movieData.data))
-  .then(() => console.log('Movie was added to favorites.'))
+  .then(() => res.status(201).send(console.log('Movie was added to favorites.')))
   .catch(err => res.status(500).send(console.error(err, 'app.postFavs error')));
 });
 
+const ridFav = (title) => {
+	deleteQuery = `DELETE FROM favorites WHERE title='${title}';`
+	return new Promise((resolve, reject) => {
+		db.query(deleteQuery, err => {
+			if (err) {
+				reject(console.error(err, 'this happened when deleting'));
+			} else {
+				resolve(console.log('That favorite is gone!'));
+			}
+		});
+	});
+};
+
 // delete favorite by id
 app.delete('/delete', (req, res) => {
-	console.log(req.body, 'for delete') // should be an id
+	console.log(req.body, 'for delete')
+  const { title } = req.body;
+	ridFav(title)
+	.then(() => res.status(200).send(console.log('got rid of it yeeeeeeees')))
+  .catch(err => res.status(500).send(console.error(err, 'well at least you are getting something my dude')));
 });
 
 module.exports = {

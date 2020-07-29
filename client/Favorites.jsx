@@ -6,14 +6,15 @@ const Favorites = ({ favorites, home, remove }) => (
     <button id='home' type='button' onClick={() => home()} >Back To Search</button>
     <h1>My Favorites</h1>
     <div>
-      {favorites.data.map(({ 
+      {favorites.map(({
         id,
+        poster,
         title,
         director,
         actors,
-        plot,
-        poster }) => (
-          <Movie key={id} poster={poster} title={title} director={director} actors={actors} plot={plot} remove={remove} />
+        plot
+      }) => (
+          <Movie key={id} poster={poster} title={title} director={director} actors={actors} plot={plot} click={remove} />
       ))}
     </div>
   </div>

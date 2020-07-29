@@ -1,18 +1,18 @@
 import React from 'react';
 
 const Movie = ({
-  id,
   title,
   director,
   actors,
   plot,
   poster,
-  remove,
+  click
 }) => (
   <div id="fav">
-    <div onClick={() => remove(id)}>
+    <div>
       <img src={poster} />
     </div>
+    <button type='button' onClick={() => click(title)}>Remove</button>
     <div>{title}</div>
     <div>Dircted By: {director}</div>
     <div>Starring: {actors}</div>
