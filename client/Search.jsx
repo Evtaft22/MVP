@@ -16,14 +16,12 @@ class Search extends Component {
     this.setState({
       title: event.target.value
     });
-    console.log('event handled')
   }
 
   handleClick() {
     const { getSearch } = this.props;
     const { title } = this.state;
     getSearch(title);
-    console.log('ran search')
   }
 
   render() {

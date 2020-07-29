@@ -10,7 +10,7 @@ const Movie = ({
   remove,
 }) => (
   <div id="fav">
-    <div onClick={() => remove()}>
+    <div onClick={() => remove(id)}>
       <img src={poster} />
     </div>
     <div>{title}</div>
