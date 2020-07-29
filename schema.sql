@@ -15,7 +15,8 @@ CREATE TABLE favorites (
   actors varchar(100),
   plot varchar(500),
   poster varchar(500),
-  rating varchar(50)
+  rating varchar(50),
+  review varchar(250)
 );
 
 

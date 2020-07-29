@@ -20,10 +20,10 @@ class Main extends Component {
     this.addFav = this.addFav.bind(this);
     this.getSearch = this.getSearch.bind(this);
     this.goHome = this.goHome.bind(this);
+    this.update = this.update.bind(this);
   }
 
   componentDidMount() {
-    // console.log('This has started!!');
     // Document.getElementById('input-field').val(''); // check out React.refs
   }
 
@@ -78,8 +78,19 @@ class Main extends Component {
   }
 
   // HOME BUTTON
-  goHome() {
+  goHome(review) {
     this.setState({ searched: false, clicked: false });
+  }
+
+  // UPDATE USER REVIEW
+  update(review, title) {
+    return axios.post('http://localhost:3000/update',
+      { review, title },
+      { headers: {
+        'Content-Type': 'application/json'
+    }})
+    .then(() => console.log('sent review to be updated'))
+    .catch(err => console.error(err, 'didn\'t send review'));
   }
 
   render() {
@@ -93,7 +104,7 @@ class Main extends Component {
         </div>
       );
     } else if (clicked) {
-      return ( <Favorites favorites={ favorites } remove={this.removeFav} home={this.goHome} /> );
+      return ( <Favorites favorites={ favorites } update={this.update} remove={this.removeFav} home={this.goHome} /> );
     } else {
       const [ Title, Year, Rated, Released, Runtime,
               Genre, Director, Actors, Plot, Poster,

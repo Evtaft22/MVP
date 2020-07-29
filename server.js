@@ -106,6 +106,29 @@ app.delete('/delete', (req, res) => {
   .catch(err => res.status(500).send(console.error(err, 'well at least you are getting something my dude')));
 });
 
+
+const update = (review, title) => {
+	const updateQuery = `UPDATE favorites SET review="${review}" WHERE title="${title}";`;
+	console.log(updateQuery);
+	return new Promise((resolve, reject) => {
+		db.query(updateQuery, err => {
+			if (err) {
+				reject(console.error(err, 'rejecteddddd'));
+			} else {
+				resolve(console.log('be reasonable, we can resolve this like gentlemen'));
+			}
+		});
+	});
+};
+
+app.post('/update', (req, res) => {
+	console.log(req.body, 'req.bodyyyy');
+	const { review, title } = req.body;
+	update(review, title)
+	.then(() => res.status(201).send(console.log('review has been updated')))
+  .catch(err => res.status(500).send(console.error(err, 'not Updated!!!!')));
+});
+
 module.exports = {
 	app,
 	db

@@ -8,8 +8,8 @@ class Search extends Component {
       title: ''
     }
 
-    this.handleChange = this.handleChange.bind(this); // this will change the state of title when the query is submitted
-    this.handleClick = this.handleClick.bind(this); // this will call onSearch to send title query to server
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(event) {

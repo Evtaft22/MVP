@@ -24,6 +24,26 @@ h2 {
   font-size: 20px;
 }
 
+.user-input {
+  position: absolute;
+  height: 100px;
+  width: 400px;
+  top: 350px;
+  left: 400px;
+  font-size: 20px;
+}
+
+.review-btn {
+  position: absolute;
+  top: 420px;
+  left: 805px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-left: 5px;
+  font-size: 15px;
+  background-color: rgb(100, 70, 184);
+}
+
 .deets {
   padding-top: 8px;
   padding-bottom: 8px;
