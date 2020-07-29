@@ -29,7 +29,8 @@ class Main extends Component {
 
   // FAVORITES
   getFavs() {
-    axios.get('http://localhost:3000/getFavs', { headers: {
+    return axios.get('http://localhost:3000/getFavs',
+    { headers: {
       'Content-Type': 'application/json'
     }})
     .then(res => this.setState({ favorites: res.data, clicked: true }))
@@ -38,7 +39,7 @@ class Main extends Component {
   }
 
   removeFav(title) {
-    axios.delete('http://localhost:3000/delete', {
+    return axios.delete('http://localhost:3000/delete', {
       headers: {'Content-Type': 'application/json'},
       data: {title}
     })
@@ -48,7 +49,7 @@ class Main extends Component {
   }
 
   addFav(title) {
-    axios.post('http://localhost:3000/postFavs',
+    return axios.post('http://localhost:3000/postFavs',
       { title },
       { headers: {
         'Content-Type': 'application/json'
@@ -69,6 +70,7 @@ class Main extends Component {
                           imdbRating ];
       this.setState({ movie: movieData, searched: true });
     })
+    .then(() => console.log('search works fine.'))
     .catch(err => console.error(err, 'Error sending Movie'));
   }
 
@@ -84,11 +86,11 @@ class Main extends Component {
         <div id='main'>
           <h1>Movie Finder</h1>
           <Search getSearch={this.getSearch} />
-          <button id='getFavs' type='button' onClick={() => this.getFavs()}>See Your Favorites</button>
+          <button class='getFavs' type='button' onClick={() => this.getFavs()}>See Your Favorites</button>
         </div>
       );
     } else if (clicked) {
-      return ( <Favorites favorites={favorites} remove={this.removeFav} home={this.goHome} /> );
+      return ( <Favorites favorites={ favorites } remove={this.removeFav} home={this.goHome} /> );
     } else {
       const [ Title, Year, Rated, Released, Runtime,
               Genre, Director, Actors, Plot, Poster,
@@ -97,22 +99,22 @@ class Main extends Component {
         <div id='main'>
           <h1>Movie Finder</h1>
           <Search getSearch={this.getSearch} />
-          <button id='seeFavs' type='button' onClick={() => this.getFavs()}>See Your Favorites</button>
+          <button class='getFavs' type='button' onClick={() => this.getFavs()}>See Your Favorites</button>
           <div id='movie'>
-            <div>
+            <button class='fav' type='button' onClick={() => this.addFav(Title)}>Favorite</button>
+            <div id='poster' >
               <img src={Poster} />
             </div>
-            <button type='button' onClick={() => this.addFav(Title)}>Favorite</button>
-            <div>{Title}</div>
-            <div>Made In: {Year}</div>
-            <div>Rated: {Rated}</div>
-            <div>Release Date: {Released}</div>
-            <div>{Title} Is {Runtime} Long</div>
-            <div>Genre: {Genre}</div>
-            <div>Dircted By: {Director}</div>
-            <div>Starring: {Actors}</div>
-            <div>Plot: {Plot}</div>
-            <div>IMDB gives {Title} a {imdbRating} out of 10</div>
+            <div id='title' >{Title}</div>
+            <div class='date' >Made In: {Year}</div>
+            <div class='rated' >Rated: {Rated}</div>
+            <div class='release' >Release Date: {Released}</div>
+            <div class='length' >{Title} Is {Runtime} Long</div>
+            <div class='genre' >Genre: {Genre}</div>
+            <div id='director' >Dircted By: {Director}</div>
+            <div id='stars' >Starring: {Actors}</div>
+            <div id='plot' >Plot: {Plot}</div>
+            <div class='rating' >IMDB gives {Title} a {imdbRating} out of 10</div>
           </div>
         </div>
       );

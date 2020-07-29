@@ -1,0 +1,147 @@
+@import url("http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
+
+h1 {
+  color: rgb(153, 153, 153);
+  background-color: rgb(100, 70, 184);
+  padding-left: 90px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 30px 10px;
+  margin-left: 10px;
+  margin-right: 600px;
+  font-size: 90px;
+  font-family: 'Monoton', cursive;
+}
+
+h2 {
+  margin-left: 25px;
+}
+
+.input-field {
+  margin-left: 20px;
+  height: 30px;
+  width: 400px;
+  font-size: 20px;
+}
+
+.deets {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-left: 5px;
+  font-size: 15px;
+  background-color: rgb(100, 70, 184);
+}
+
+/* .home {
+
+} */
+
+.getFavs {
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  background-color: rgb(100, 70, 184);
+}
+
+.fav {
+  margin-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  font-size: 15px;
+  background-color: rgb(100, 70, 184);
+}
+
+.remove {
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  background-color: rgb(100, 70, 184);
+}
+
+#title {
+  position: absolute;
+  top: 500px;
+  left: 400px;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.date {
+  position: absolute;
+  top: 540px;
+  left: 400px;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.rated {
+  position: absolute;
+  top: 580px;
+  left: 400px;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.release {
+  position: absolute;
+  top: 620px;
+  left: 400px;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.length {
+  position: absolute;
+  top: 660px;
+  left: 400px;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.genre {
+  position: absolute;
+  top: 700px;
+  left: 400px;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+#director {
+  position: absolute;
+  top: 740px;
+  left: 400px;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+#stars {
+  position: absolute;
+  top: 780px;
+  left: 400px;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.rating {
+  position: absolute;
+  top: 820px;
+  left: 400px;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+#plot {
+  background-color: rgb(100, 70, 184);
+  font-size: 20px;
+  margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 650px;
+  margin-bottom: 80px;
+  padding: 20px;
+  border-radius: 10px;
+}
+#poster {
+  margin-top: 15px;
+  margin-left: 20px;
+}

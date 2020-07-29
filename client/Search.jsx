@@ -28,9 +28,9 @@ class Search extends Component {
     const { title } = this.state;
     return (
       <div>
-        <h3>Search Movie Title</h3>
-        <input id='input-field' type='text' value={title} onChange={this.handleChange}></input>
-        <button type='button' onClick={this.handleClick}>Gimme The Deets!</button>
+        <h2>Search Movie Title</h2>
+        <input class='input-field' type='text' value={title} onChange={this.handleChange}></input>
+        <button class='deets' type='button' onClick={this.handleClick}>Gimme The Deets!</button>
       </div>
     );
   }

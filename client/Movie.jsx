@@ -9,14 +9,14 @@ const Movie = ({
   click
 }) => (
   <div id="fav">
-    <div>
+    <button class='remove' type='button' onClick={() => click(title)}>Remove</button>
+    <div id='poster' >
       <img src={poster} />
     </div>
-    <button type='button' onClick={() => click(title)}>Remove</button>
-    <div>{title}</div>
-    <div>Dircted By: {director}</div>
-    <div>Starring: {actors}</div>
-    <div>Plot: {plot}</div>
+    <div id='title' >{title}</div>
+    <div id='director' >Dircted By: {director}</div>
+    <div id='stars' >Starring: {actors}</div>
+    <div id='plot' >Plot: {plot}</div>
   </div>
 );
 

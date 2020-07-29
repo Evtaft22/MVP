@@ -7,12 +7,6 @@ const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
-// const CLIENT_PATH = path.join(__dirname, '/index.html');
-
-// app.use(express.static(CLIENT_PATH));
-// app.use(express.json());
-// const { Router } = require('express');
 app.use(cors());
 const router = express.Router();
 app.use('/server.js', cors(), router);
@@ -22,8 +16,6 @@ app.use(function(req, res, next) {
 	res.header('Access-Control-Allow-Methods', 'POST,GET,DELETE,OPTIONS,PUT');
 	next();
 });
-
-
 const { getMovie } = require('./client/apiHelper')
 const { PORT } = process.env;
 
@@ -65,9 +57,6 @@ const getFavorites = () => {
   });
 };
 
-// recieves get request from client through the componentDidMount
-// grabs all favorites from database
-// renders them to the page
 app.get('/getFavs', (req, res) => {
   getFavorites()
   .then(favsList => res.status(200).send(favsList))
@@ -81,7 +70,7 @@ const postFavorite = (movieObj) => {
   return new Promise((resolve, reject) => {
     db.query(moviesQuery, err => {
       if (err) {
-        reject(console.error(err, "postFavorite error"));
+        reject(console.error(err, 'postFavorite error'));
       } else {
         resolve(console.log('Movie data was added to DB successfully!'));
       }
@@ -98,7 +87,7 @@ app.post('/postFavs', (req, res) => {
 });
 
 const ridFav = (title) => {
-	deleteQuery = `DELETE FROM favorites WHERE title='${title}';`
+	deleteQuery = `DELETE FROM favorites WHERE title="${title}";`;
 	return new Promise((resolve, reject) => {
 		db.query(deleteQuery, err => {
 			if (err) {
@@ -110,9 +99,7 @@ const ridFav = (title) => {
 	});
 };
 
-// delete favorite by id
 app.delete('/delete', (req, res) => {
-	console.log(req.body, 'for delete')
   const { title } = req.body;
 	ridFav(title)
 	.then(() => res.status(200).send(console.log('got rid of it yeeeeeeees')))

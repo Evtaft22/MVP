@@ -3,7 +3,7 @@ import Movie from './Movie.jsx'
 
 const Favorites = ({ favorites, home, remove }) => (
   <div>
-    <button id='home' type='button' onClick={() => home()} >Back To Search</button>
+    <button class='home' type='button' onClick={() => home()} >Back To Search</button>
     <h1>My Favorites</h1>
     <div>
       {favorites.map(({
