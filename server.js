@@ -8,11 +8,23 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+// const CLIENT_PATH = path.join(__dirname, '/index.html');
+
+// app.use(express.static(CLIENT_PATH));
+// app.use(express.json());
+// const { Router } = require('express');
+app.use(cors());
 const router = express.Router();
 app.use('/server.js', cors(), router);
+app.use(function(req, res, next) {
+	res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8080');
+	res.header('Access-Control-Allow-Headers', 'Content-Type,Origin,Authorization,Accept,X-Requested-With');
+	res.header('Access-Control-Allow-Methods', 'POST,GET,DELETE,OPTIONS,PUT');
+	next();
+});
+
 
 const { getMovie } = require('./client/apiHelper')
-const { postFavorite, getFavorites } = require('./helpers');
 const { PORT } = process.env;
 
 const db = mysql.createConnection({
@@ -40,36 +52,49 @@ app.listen(PORT, err => {
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/index.html')));
 
-
-// app.post = ('/postMovies', (req, res) => {
-//   console.log(req.body, 'for rendering movies');
-//   const { title } = req.body;
-//   getMovie(title)
-//   .then(movieData => res.status(201).send(movieData))
-//   .catch(err => res.status(500).send(console.error(err, 'Could not add movie to favorites.')));
-// });
-
+const getFavorites = () => {
+  const queryStr = `SELECT * FROM favorites;`;
+  return new Promise((resolve, reject) => {
+    db.query(queryStr, (err, favsList) => {
+      if (err) {
+        reject(console.error(err, 'Could not fetch movie from DB.'));
+      } else {
+        resolve(favsList);
+      }
+    });
+  });
+};
 
 // recieves get request from client through the componentDidMount
 // grabs all favorites from database
 // renders them to the page
 app.get('/getFavs', (req, res) => {
-  res.send(console.log('hey'));
   getFavorites()
   .then(favsList => res.status(200).send(favsList))
   .catch(err => res.status(500).send(console.error(err, 'Could not get your favorites.')));
 });
 
-// recieves post from handle favs
+const postFavorite = (movieObj) => {
+  const { Title, Year, Rated, Released, Runtime, Genre,
+				Director, Actors, Plot, Poster, imdbRating, } = movieObj;
+  const moviesQuery = `INSERT INTO favorites(title, date, rated, released, runtime, genre, director, actors, plot, poster, rating) VALUES("${Title}", "${Year}", "${Rated}", "${Released}", "${Runtime}", "${Genre}", "${Director}", "${Actors}", "${Plot}", "${Poster}", "${imdbRating}");`;
+  return new Promise((resolve, reject) => {
+    db.query(moviesQuery, err => {
+      if (err) {
+        reject(console.log(err, "postFavorite error"));
+      } else {
+        resolve(console.log('Movie data was added to DB successfully!'));
+      }
+    });
+  });
+};
+
 app.post('/postFavs', (req, res) => {
-	console.log(req.body, 'for adding favs'); // should be a title
 	const { title } = req.body;
 	getMovie(title)
-  .then(movieData => {
-		return Promise.resolve(postFavorite(movieData));
-	})
-  .then(res => res.status(201).send(console.log('Movie was added to favorites.')))
-  .catch(err => res.status(500).send(console.error(err, 'Could not add movie to favorites.')));
+  .then(movieData => postFavorite(movieData.data))
+  .then(() => console.log('Movie was added to favorites.'))
+  .catch(err => res.status(500).send(console.error(err, 'app.postFavs error')));
 });
 
 // delete favorite by id

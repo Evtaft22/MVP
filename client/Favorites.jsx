@@ -6,7 +6,7 @@ const Favorites = ({ favorites, home, remove }) => (
     <button id='home' type='button' onClick={() => home()} >Back To Search</button>
     <h1>My Favorites</h1>
     <div>
-      {favorites.map(({ 
+      {favorites.data.map(({ 
         id,
         title,
         director,
