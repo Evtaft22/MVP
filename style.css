@@ -32,9 +32,15 @@ h2 {
   background-color: rgb(100, 70, 184);
 }
 
-/* .home {
-
-} */
+.home {
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 15px;
+  background-color: rgb(100, 70, 184);
+}
 
 .getFavs {
   margin-left: 20px;
@@ -60,10 +66,12 @@ h2 {
 
 .remove {
   margin-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
   font-size: 15px;
   background-color: rgb(100, 70, 184);
 }
@@ -75,35 +83,35 @@ h2 {
   font-size: 20px;
   margin-bottom: 5px;
 }
-.date {
+#date {
   position: absolute;
   top: 540px;
   left: 400px;
   font-size: 20px;
   margin-bottom: 5px;
 }
-.rated {
+#rated {
   position: absolute;
   top: 580px;
   left: 400px;
   font-size: 20px;
   margin-bottom: 5px;
 }
-.release {
+#release {
   position: absolute;
   top: 620px;
   left: 400px;
   font-size: 20px;
   margin-bottom: 5px;
 }
-.length {
+#length {
   position: absolute;
   top: 660px;
   left: 400px;
   font-size: 20px;
   margin-bottom: 5px;
 }
-.genre {
+#genre {
   position: absolute;
   top: 700px;
   left: 400px;
@@ -124,7 +132,7 @@ h2 {
   font-size: 20px;
   margin-bottom: 5px;
 }
-.rating {
+#rating {
   position: absolute;
   top: 820px;
   left: 400px;

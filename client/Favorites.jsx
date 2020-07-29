@@ -8,13 +8,22 @@ const Favorites = ({ favorites, home, remove }) => (
     <div>
       {favorites.map(({
         id,
-        poster,
         title,
+        year,
+        rated,
+        released,
+        runtime,
+        genre,
         director,
         actors,
-        plot
+        plot,
+        imdbRating,
+        poster,
       }) => (
-          <Movie key={id} poster={poster} title={title} director={director} actors={actors} plot={plot} click={remove} />
+          <Movie key={id} date={year} rating={imdbRating}
+          rated={rated} released={released} runtime={runtime} 
+          genre={genre} poster={poster} title={title} director={director}
+          actors={actors} plot={plot} click={remove} />
       ))}
     </div>
   </div>

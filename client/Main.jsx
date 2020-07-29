@@ -33,7 +33,10 @@ class Main extends Component {
     { headers: {
       'Content-Type': 'application/json'
     }})
-    .then(res => this.setState({ favorites: res.data, clicked: true }))
+    .then(res => {
+      console.log(res.data);
+      this.setState({ favorites: res.data, clicked: true });
+    })
     .then(() => console.log('Error getting favorites'))
     .catch(err => console.error(err, 'Error getting favorites'));
   }
@@ -99,22 +102,26 @@ class Main extends Component {
         <div id='main'>
           <h1>Movie Finder</h1>
           <Search getSearch={this.getSearch} />
-          <button class='getFavs' type='button' onClick={() => this.getFavs()}>See Your Favorites</button>
+          <button class='getFavs' type='button' onClick={() => this.getFavs()}>
+            See Your Favorites
+            </button>
           <div id='movie'>
-            <button class='fav' type='button' onClick={() => this.addFav(Title)}>Favorite</button>
+            <button class='fav' type='button' onClick={() => this.addFav(Title)}>
+              Favorite
+              </button>
             <div id='poster' >
               <img src={Poster} />
             </div>
             <div id='title' >{Title}</div>
-            <div class='date' >Made In: {Year}</div>
-            <div class='rated' >Rated: {Rated}</div>
-            <div class='release' >Release Date: {Released}</div>
-            <div class='length' >{Title} Is {Runtime} Long</div>
-            <div class='genre' >Genre: {Genre}</div>
+            <div id='date' >Made In: {Year}</div>
+            <div id='rated' >Rated: {Rated}</div>
+            <div id='release' >Release Date: {Released}</div>
+            <div id='length' >{Title} Is {Runtime} Long</div>
+            <div id='genre' >Genre: {Genre}</div>
             <div id='director' >Dircted By: {Director}</div>
             <div id='stars' >Starring: {Actors}</div>
             <div id='plot' >Plot: {Plot}</div>
-            <div class='rating' >IMDB gives {Title} a {imdbRating} out of 10</div>
+            <div id='rating' >IMDB gives {Title} a {imdbRating} out of 10</div>
           </div>
         </div>
       );
